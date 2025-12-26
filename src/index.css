@@ -1,0 +1,165 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  background-color: #000000;
+  color: #f5f5f7;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #000;
+}
+
+header {
+  padding: 100px 20px 60px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0;
+}
+
+.subtitle {
+  color: #86868b;
+  font-size: 1.1rem;
+  margin-top: 12px;
+  font-weight: 400;
+}
+
+.gallery-container {
+  padding: 0 40px 100px;
+  max-width: 1800px;
+  margin: 0 auto;
+  column-count: 3; 
+  column-gap: 30px; 
+}
+
+@media (max-width: 1200px) { .gallery-container { column-count: 2; } }
+@media (max-width: 700px) { .gallery-container { column-count: 1; padding: 0 20px; } }
+
+.photo-card {
+  break-inside: avoid; 
+  margin-bottom: 30px;
+  position: relative;
+  cursor: zoom-in;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #111;
+  /* This forces the GPU to keep the layer ready */
+  transform: translate3d(0,0,0); 
+  backface-visibility: hidden; 
+}
+
+.photo-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); 
+  will-change: transform;
+}
+
+.photo-card:hover img {
+  transform: scale(1.02);
+}
+
+/* LIGHTBOX */
+.lightbox-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.98);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.lightbox-img {
+  max-width: 95vw;
+  max-height: 85vh;
+  object-fit: contain;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  cursor: default;
+}
+
+/* NAVIGATION BUTTONS */
+.nav-controls {
+  position: absolute;
+  bottom: 100px; 
+  display: flex;
+  gap: 15px; 
+  z-index: 2002;
+  align-items: center;
+}
+
+.nav-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.nav-btn.close-btn {
+  width: 40px; 
+  height: 40px;
+  opacity: 0.8;
+  border-color: transparent;
+}
+.nav-btn.close-btn:hover {
+  background: rgba(255, 50, 50, 0.2); 
+  opacity: 1;
+}
+
+/* METADATA BAR */
+.metadata-panel {
+  position: absolute;
+  bottom: 30px;
+  display: flex;
+  gap: 25px;
+  color: #e5e5e7;
+  font-size: 0.95rem;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: rgba(40, 40, 40, 0.6);
+  padding: 12px 24px;
+  border-radius: 100px; 
+  backdrop-filter: blur(20px); 
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  z-index: 2001;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-variant-numeric: tabular-nums; 
+  letter-spacing: 0.02em;
+}
+
+.meta-icon {
+  opacity: 0.7;
+  width: 18px;
+  height: 18px;
+}
